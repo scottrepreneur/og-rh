@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import styled from "styled-components"
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom"
 
 import Web3ReactManager from "../components/Web3ReactManager"
 // import { useWeb3React } from "@web3-react/core"
@@ -40,7 +40,7 @@ export default function App() {
         <AppWrapper>
           <BodyWrapper>
             <Web3ReactManager>
-              <BrowserRouter>
+              <HashRouter>
                 <Nav />
                 <Suspense fallback={null}>
                   <Switch>
@@ -67,7 +67,7 @@ export default function App() {
                     <Route path="/rewards" component={() => <Rewards />} />
                   </Switch>
                 </Suspense>
-              </BrowserRouter>
+              </HashRouter>
             </Web3ReactManager>
           </BodyWrapper>
         </AppWrapper>
