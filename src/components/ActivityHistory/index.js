@@ -207,7 +207,8 @@ const QuestOverview = styled.div`
 `
 
 const Platform = styled.div`
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: bold;
   color: ${({ color }) => color};
   text-transform: uppercase;
 `
@@ -311,14 +312,6 @@ export default function ActivityHistory() {
               History
               <SubHeading>Quests you've completed so far</SubHeading>
             </div>
-            {!isExtraSmall && (
-              <CopyLink>
-                <div>
-                  Share your stats{" "}
-                  <Copy toCopy={"https://rabithole.gg/" + account} />
-                </div>
-              </CopyLink>
-            )}
             <div style={{ gridArea: "activities" }}>
               {quests &&
                 quests.map((quest) => {
@@ -334,7 +327,7 @@ export default function ActivityHistory() {
                         </Icon>
                         <QuestOverview>
                           <Platform color={quest.color}>
-                            {quest.platform}
+                            {quest.name}
                           </Platform>
                           <BlurbWrapper>{quest.blurb}</BlurbWrapper>
                         </QuestOverview>
