@@ -371,7 +371,7 @@ export default function AccountDetails({
               <SharingSettings>
                 <label>
                   {" "}
-                  Click Public to share your score on 3Box
+                  Click Public to share your score on 3B0x
                   {/* <input type="checkbox"></input> */}
                 </label>
                 <Selector onClick={togglePrivacy}>

@@ -30,10 +30,6 @@ const BrandWrapper = styled.div`
 
 const Logo = styled.img`
   width: 150px;
-
-  :hover {
-    cursor: pointer;
-  }
 `
 
 const NavList = styled.div`
@@ -199,7 +195,7 @@ function Nav({ history }) {
 
   const score = useScore()
 
-  const account = useWeb3React()
+  const { account } = useWeb3React()
 
   function toggleSidebar(sidebarOpen) {
     toggleSidebarOpen(sidebarOpen === true ? false : true)
@@ -208,52 +204,52 @@ function Nav({ history }) {
   return (
     <>
       <NavWrapper>
-        <BrandWrapper>
-          <Logo
-            onClick={() => history.push("/")}
-            src={require("../../assets/images/rabbithole.png")}
-            alt="rabbithole logo"
-          />
-        </BrandWrapper>
-        {!isExtraSmall && (
+        {account && (
+          <BrandWrapper>
+            <a href="/">
+              <Logo
+                src={require("../../assets/images/rabbithole.png")}
+                alt="rabbithole logo"
+              />
+            </a>
+          </BrandWrapper>
+        )}
+        {!isExtraSmall && account && (
           <NavList>
-            {account.account &&
-              <>
-                <NavItem
-                  onClick={() => history.push("/")}
-                  active={history.location.pathname === "/"}
-                >
-                  Dashboard
-                </NavItem>
-                <NavItem
-                  onClick={() => history.push("/activity")}
-                  active={history.location.pathname === "/activity"}
-                >
-                  Activity
-                </NavItem>
-                <NavItem
-                  onClick={() => history.push("/progress")}
-                  active={history.location.pathname === "/progress"}
-                >
-                  Progress
-                </NavItem>
-                <NavItem
-                  onClick={() => history.push("/faq")}
-                  active={history.location.pathname === "/faq"}
-                >
-                  FAQ
-                </NavItem>
-              </>
-            }
+            <NavItem
+              onClick={() => history.push("/")}
+              active={history.location.pathname === "/"}
+            >
+              Dashboard
+            </NavItem>
+            <NavItem
+              onClick={() => history.push("/activity")}
+              active={history.location.pathname === "/activity"}
+            >
+              Activity
+            </NavItem>
+            <NavItem
+              onClick={() => history.push("/progress")}
+              active={history.location.pathname === "/progress"}
+            >
+              Progress
+            </NavItem>
+            <NavItem
+              onClick={() => history.push("/faq")}
+              active={history.location.pathname === "/faq"}
+            >
+              FAQ
+            </NavItem>
           </NavList>
         )}
+
         <AccountWrapper>
-          {!isExtraSmall && (
+          {!isExtraSmall && account && (
             <LoginWrapper>
               <Web3Status />
             </LoginWrapper>
           )}
-          <Score account={account}>{score} XP</Score>
+          {account && <Score account={account}>{score} XP</Score>}
           {isExtraSmall && (
             <Hover
               onClick={() => {
@@ -277,48 +273,44 @@ function Nav({ history }) {
             />
           </a>
         </SidebarBrandWrapper>
-        <SidebarScore>{score} XP</SidebarScore>
+        {account && <SidebarScore>{score} XP</SidebarScore>}
         <SidebarList>
-          {account.account &&
-            <>
-              <SidebarItem
-                onClick={() => {
-                  history.push("/")
-                  toggleSidebar(sidebarOpen)
-                }}
-                active={history.location.pathname === "/"}
-              >
-                Dashboard
-              </SidebarItem>
-              <SidebarItem
-                onClick={() => {
-                  history.push("/activity")
-                  toggleSidebar(sidebarOpen)
-                }}
-                active={history.location.pathname === "/activity"}
-              >
-                Activity
-              </SidebarItem>
-              <SidebarItem
-                onClick={() => {
-                  history.push("/progress")
-                  toggleSidebar(sidebarOpen)
-                }}
-                active={history.location.pathname === "/progress"}
-              >
-                Progress
-              </SidebarItem>
-              <SidebarItem
-                onClick={() => {
-                  history.push("/faq")
-                  toggleSidebar(sidebarOpen)
-                }}
-                active={history.location.pathname === "/faq"}
-              >
-                FAQ
-              </SidebarItem>
-            </>
-          }
+          <SidebarItem
+            onClick={() => {
+              history.push("/")
+              toggleSidebar(sidebarOpen)
+            }}
+            active={history.location.pathname === "/"}
+          >
+            Dashboard
+          </SidebarItem>
+          <SidebarItem
+            onClick={() => {
+              history.push("/activity")
+              toggleSidebar(sidebarOpen)
+            }}
+            active={history.location.pathname === "/activity"}
+          >
+            Activity
+          </SidebarItem>
+          <SidebarItem
+            onClick={() => {
+              history.push("/progress")
+              toggleSidebar(sidebarOpen)
+            }}
+            active={history.location.pathname === "/progress"}
+          >
+            Progress
+          </SidebarItem>
+          <SidebarItem
+            onClick={() => {
+              history.push("/faq")
+              toggleSidebar(sidebarOpen)
+            }}
+            active={history.location.pathname === "/faq"}
+          >
+            FAQ
+          </SidebarItem>
         </SidebarList>
         <SidebarLoginWrapper>
           <Web3Status />

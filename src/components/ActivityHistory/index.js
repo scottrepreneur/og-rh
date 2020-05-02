@@ -155,10 +155,6 @@ const Activity = styled.div`
   margin: 10px auto;
   width: 90%;
 
-  &: hover {
-    background-color: #141516;
-  }
-
   &:last-of-type {
     margin-bottom: 0;
   }

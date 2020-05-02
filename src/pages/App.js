@@ -1,12 +1,11 @@
 import React, { Suspense } from "react"
 import styled from "styled-components"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
-import { useWeb3React } from "@web3-react/core"
 
 import Web3ReactManager from "../components/Web3ReactManager"
-
+import { useWeb3React } from "@web3-react/core"
 import Nav from "../components/Nav"
-import Home from "../components/Home"
+import AltHome from "../components/AltHome"
 import Progress from "../pages/Progress"
 import ActivityHistory from "../components/ActivityHistory"
 import Rewards from "../components/Rewards"
@@ -45,29 +44,25 @@ export default function App() {
                 <Nav />
                 <Suspense fallback={null}>
                   <Switch>
-                    
-                    <Route exact strict path="/" component={() => <Home />} />
-                    <Route 
+                    <Route
                       exact
-                      string
-                      path="/faq" 
-                      component={() => <FAQ />} />
-                      {account && (
-                        <>
-                          <Route
-                          exact
-                          strict
-                          path="/activity"
-                          component={() => <ActivityHistory />}
-                          />
-                          <Route
-                            exact
-                            strict
-                            path="/progress"
-                            component={() => <Progress />}
-                          />
-                        </>
-                      )}           
+                      strict
+                      path="/activity"
+                      component={() => <ActivityHistory />}
+                    />
+                    <Route
+                      exact
+                      strict
+                      path="/"
+                      component={() => <AltHome />}
+                    />
+                    <Route
+                      exact
+                      strict
+                      path="/progress"
+                      component={() => <Progress />}
+                    />
+                    <Route exact string path="/faq" component={() => <FAQ />} />
                     <Redirect to="/" />
                     <Route path="/rewards" component={() => <Rewards />} />
                   </Switch>

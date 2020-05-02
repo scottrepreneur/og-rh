@@ -7,10 +7,14 @@ import {
   // useNotificationThread,
   // useThreadPosts,
 } from "../../hooks"
+import { Link } from "../../theme/components"
+import { Text } from "rebass"
 import Spinner from "../Spinner"
 import useMedia from "use-media"
 import { useQuests } from "../../contexts/Application"
 import { financeTrack, gamingTrack } from "../../quests"
+import { AutoColumn } from "../../components/Column"
+import { AutoRow, RowFixed, RowBetween } from "../../components/Row"
 
 const Wrapper = styled.div`
   display: flex;
@@ -81,21 +85,13 @@ const Gutter = styled.div`
 `
 
 const Quest = styled.div`
-  width: 100%;
-  display: grid;
-  height: ${({ isOpen }) => (isOpen ? "auto" : "75px")};
+  width: calc(100%-40px);
   font-size: 14px;
-  align-items: center;
   background-color: #1f1f1f;
   border: 1px solid ${({ theme }) => theme.outlinePurple};
   border-radius: 10px;
-  grid-template-columns: 68px 120px auto 75px 75px 120px 75px;
-  grid-template-rows: ${({ isOpen }) => (isOpen ? "75px auto 60px" : "75px")};
-  grid-template-areas: ${({ isOpen }) =>
-    isOpen
-      ? '"exp icon main perc type track points"\n"desc desc desc desc desc desc desc"\n"resc resc resc resc cta cta cta"'
-      : '"exp icon main perc type track points"'};
-  margin-bottom: 13px;
+  padding: 20px;
+  margin-bottom: 20px;
 
   &:hover {
     cursor: pointer;
@@ -104,43 +100,6 @@ const Quest = styled.div`
 
   &:first-of-type {
     margin-top: 10px;
-  }
-
-  @media (max-width: 1400px) {
-    grid-template-areas: ${({ isOpen }) =>
-      isOpen
-        ? '"exp icon main perc type track points"\n"desc desc desc desc desc desc desc"\n". cta cta resc resc resc resc"'
-        : '"exp icon main perc type track points"'};
-    grid-template-columns: 40px 50px auto 75px 75px 120px 75px;
-  }
-
-  @media (max-width: 970px) {
-    grid-template-areas: ${({ isOpen }) =>
-      isOpen
-        ? '"exp icon main track points"\n"desc desc desc desc desc"\n"cta cta resc resc resc"'
-        : '"exp icon main track points"'};
-    grid-template-columns: 40px 50px auto 120px 75px;
-    grid-template-rows: ${({ isOpen }) => (isOpen ? "75px auto 60px" : "75px")};
-  }
-
-  @media (max-width: 820px) {
-    grid-template-columns: 40px 50px auto 120px 80px;
-  }
-
-  @media (max-width: 670px) {
-    grid-template-columns: 40px 50px auto 120px 80px;
-  }
-
-  @media (max-width: 525px) {
-    grid-template-rows: ${({ isOpen }) => (isOpen ? "75px auto 40px" : "75px")};
-    grid-template-areas: ${({ isOpen }) =>
-      isOpen
-        ? '"exp icon main main points"\n"desc desc desc desc desc"\n"cta cta cta resc resc "\n"track track track resc resc"'
-        : '"exp icon main main points"'};
-    grid-template-columns: 15px 45px 50px auto 75px;
-    grid-template-rows: ${({ isOpen }) =>
-      isOpen ? "75px auto 30px 45px" : "75px"};
-    grid-column-gap: 2px;
   }
 `
 
@@ -188,8 +147,7 @@ const Icon = styled.div`
 `
 
 const Platform = styled.div`
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 10px;
   color: ${({ color }) => color};
   text-transform: uppercase;
 `
@@ -200,20 +158,14 @@ const Track = styled.div`
   display: flex;
   width: 70px;
   height: 24px;
-  font-size: 13px;
-  color: ${({ color }) => color};
-  background-color: none;
-  border: 1px solid ${({ color }) => color};
+  font-size: 16px;
+  color: rgba(245, 245, 253, 1);
+  background-color: ${({ color }) => color};
   border-radius: 20px;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   white-space: nowrap;
-
-  @media (max-width: 550px) {
-    grid-area: none;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  }
 `
 
 const QuestWrapper = styled.div`
@@ -226,71 +178,25 @@ const QuestOverview = styled.div`
   padding-left: 15px;
 `
 
-const JustifyEnd = styled.div`
-  justify-self: end;
-  margin-right: 20px;
-`
-
 const Points = styled.div`
   grid-area: points;
   border: 1px solid rgba(141, 251, 201, 0.4);
   border-radius: 15px;
   color: #8DFBC9;
   height: 27px;
-  width: 60px;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px 10px;
   font-family: Inter;
   font-size 13px;
   font-weight: bold;
+  white-space: nowrap;
 `
 
 const QuestType = styled.div`
   grid-area: type;
-`
-
-const Description = styled.div`
-  width: 90%;
-  grid-area: desc;
-  margin: auto;
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  padding-bottom: 20px;
-  border-bottom: 1px solid #2F2E2E;
-`
-
-const Resource = styled.div`
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  grid-area: resc;
-  font-size: 13px;
-  text-align: center;
-  margin-bottom: 15px;
-
-  & > a {
-    color: #8dfbc9;
-
-    :visited {
-      color: #8dfbc9;
-    }
-  }
-
-  @media (@max-width: 550px) {
-    margin-bottom 10px;
-  }
-`
-
-const CTA = styled.div`
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  grid-area: cta;
-  font-size: 10px;
-  color: ${({ color }) => color};
-  text-transform: uppercase;
- 
-  @media (max-width: 550px) {
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-    justify-content: center;
-    align-items: center;
-  }
 `
 
 const Loading = styled.div`
@@ -307,12 +213,10 @@ const Footer = styled.div`
   }
 `
 
-export default function QuestSection() {
+export default function QuestSection({ account }) {
   const [weeklyQuests, setWeeklyQuests] = useState([])
 
   const [sideQuests, setSideQuests] = useState([])
-
-  const { account } = useWeb3React()
 
   const ENSName = useENSName(account)
 
@@ -330,7 +234,7 @@ export default function QuestSection() {
 
   const isXXSmall = useMedia({ maxWidth: "930px" })
 
-  const isXXXSmall = useMedia({ maxWidth: "525px" })
+  const isBelow600 = useMedia({ maxWidth: "600px" })
 
   const root0 = "COMP-101"
   const root1 = "KITTY-101"
@@ -397,61 +301,56 @@ export default function QuestSection() {
         }
       }}
     >
-      <Collapser
-        isOpen={OpenQuest === quest}
-        src={require("../../assets/images/carat.svg")}
-      ></Collapser>
-      <Icon>
-        <img src={require("../../assets/images/" + quest?.imgPath)} alt="" />
-      </Icon>
-      <QuestOverview>
-        <Platform color={quest.color}>
-         {quest.name}
-        </Platform>
-        <BlurbWrapper>{quest.blurb}</BlurbWrapper>
-      </QuestOverview>
-      {!isExtraSmall && (
-        <JustifyEnd style={{ gridArea: "perc" }}>
-          {quest.progress.toFixed(1) + "%"}
-        </JustifyEnd>
-      )}
-      {!isExtraSmall && (
-        <QuestType>
-          <img
-            src={require("../../assets/images/track.svg")}
-            alt={quest.type}
-          />
-        </QuestType>
-      )}
-      {!isXXXSmall ? (
-        <Track color={quest.categoryColor} isOpen={OpenQuest === quest}>
-          {quest.category}
-        </Track>
-      ) : (
-        <div
-          style={{
-            gridArea: "track",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Track color={quest.categoryColor} isOpen={OpenQuest === quest}>
-            {quest.category}
-          </Track>
-        </div>
-      )}
-      <Points>{quest.points} XP</Points>
-      <Description isOpen={OpenQuest === quest}>
-        {quest.description}
-      </Description>
-      <Resource isOpen={OpenQuest === quest}>
-        <p style={{ margin: '5px 0'}}>Where to start:</p>
-        <a href={quest.resource} target="_blank" rel="noopener noreferrer">
-          {quest.resource}
-        </a>
-      </Resource>
-      <CTA isOpen={OpenQuest === quest} color={quest.color}>{quest.platform}</CTA>
+      <AutoColumn gap="20px">
+        <RowBetween>
+          <RowFixed>
+            <Collapser
+              isOpen={OpenQuest === quest}
+              src={require("../../assets/images/carat.svg")}
+            />
+            <Icon style={{ marginLeft: "10px" }}>
+              <img
+                src={require("../../assets/images/" + quest?.imgPath)}
+                alt=""
+              />
+            </Icon>
+          </RowFixed>
+          <QuestOverview>
+            <Platform color={quest.color}>{quest.name}</Platform>
+            <BlurbWrapper>{quest.blurb}</BlurbWrapper>
+          </QuestOverview>
+          <AutoRow gap="10px" style={{ justifyContent: "flex-end" }}>
+            {!isBelow600 && (
+              <Track color={quest.categoryColor}>{quest.category}</Track>
+            )}
+            <div>{!isExtraSmall && quest.progress.toFixed(1) + "%"}</div>
+            {!isExtraSmall && (
+              <QuestType>
+                <img
+                  src={require("../../assets/images/track.svg")}
+                  alt={quest.type}
+                />
+              </QuestType>
+            )}
+            <Points>{quest.points} XP</Points>
+          </AutoRow>
+        </RowBetween>
+        {OpenQuest === quest && (
+          <AutoColumn gap="20px">
+            <Text>{quest.description}</Text>
+            <RowBetween>
+              <Link
+                href={quest.resource}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Text color="#6FCF97">{quest.resource}</Text>
+              </Link>
+              <Text>{quest.platform}</Text>
+            </RowBetween>
+          </AutoColumn>
+        )}
+      </AutoColumn>
     </Quest>
   )
 
@@ -489,9 +388,10 @@ export default function QuestSection() {
           <Section>
             <Heading>
               <div>
-                Quests in progress
+                Active Quests
                 <span>
-                  Up next in the rabbit hole
+                  Complete these quests to move onto the next level in its
+                  track. View your current journey on the Progress page.
                 </span>
               </div>
             </Heading>
@@ -508,18 +408,17 @@ export default function QuestSection() {
               <Heading>
                 <div>
                   Bonus Challenges
-                  <span>Just some something extra to make your experience better</span>
+                  <span>Complete these challenges before they expire</span>
                 </div>
               </Heading>
               {!isXXSmall && <Gutter />}
               <QuestWrapper>
-                {quests
-                  .map((quest, i) => {
-                    if (quest.type === "side-quest" && quest.progress < 100) {
-                      return <QuestItem quest={quest} />
-                    }
-                    return true
-                  })}
+                {quests.map((quest, i) => {
+                  if (quest.type === "side-quest" && quest.progress < 100) {
+                    return <QuestItem quest={quest} />
+                  }
+                  return true
+                })}
               </QuestWrapper>
             </Section>
           )}

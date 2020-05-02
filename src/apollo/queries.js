@@ -4,11 +4,18 @@ export const COMPOUND_QUERY = gql`
   query account($user: ID!) {
     account(id: $user) {
       id
-      tokens {
-        id
-      }
       totalBorrowValueInEth
       totalCollateralValueInEth
+    }
+  }
+`
+
+export const ENS_QUERY = gql`
+  query domains($name: String) {
+    domains(where: { name: $name }) {
+      owner {
+        id
+      }
     }
   }
 `
@@ -58,7 +65,7 @@ export const MKR_SPELL_VOTES_QUERY = gql`
 
 export const MKR_POLL_VOTES_QUERY = gql`
   query pollVotes($user: String!) {
-    pollVotes(where: {voter: $user}) {
+    pollVotes(where: { voter: $user }) {
       id
       voter
     }
