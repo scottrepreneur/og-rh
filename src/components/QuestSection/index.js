@@ -316,22 +316,11 @@ export default function QuestSection({ account }) {
             </Icon>
           </RowFixed>
           <QuestOverview>
-            <Platform color={quest.color}>{quest.name}</Platform>
+            <Platform color={quest.categoryColor}>{quest.name}</Platform>
             <BlurbWrapper>{quest.blurb}</BlurbWrapper>
           </QuestOverview>
           <AutoRow gap="10px" style={{ justifyContent: "flex-end" }}>
-            {!isBelow600 && (
-              <Track color={quest.categoryColor}>{quest.category}</Track>
-            )}
             <div>{!isExtraSmall && quest.progress.toFixed(1) + "%"}</div>
-            {!isExtraSmall && (
-              <QuestType>
-                <img
-                  src={require("../../assets/images/track.svg")}
-                  alt={quest.type}
-                />
-              </QuestType>
-            )}
             <Points>{quest.points} XP</Points>
           </AutoRow>
         </RowBetween>
