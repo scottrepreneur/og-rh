@@ -51,7 +51,7 @@ export const financeTrack = {
 
 export const gamingTrack = {
   "KITTY-101": {
-    children: ["MANA-101", "SEA-101"]
+    children: ["MANA-101", "SEA-101"],
   },
   "MANA-101": {
     children: ["MANA-201"],
