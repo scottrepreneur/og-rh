@@ -172,7 +172,7 @@ const questList = {
   },
   ENS1: {
     name: "ENS-101",
-    type: "track",
+    type: "side-quest",
     blurb: "Register an ENS name",
     task: "Register an ENS name to your Ethereum address.",
     description:
@@ -477,7 +477,7 @@ const questList = {
   },
   UNI3: {
     name: "UNI-301",
-    type: "side-quest",
+    type: "track",
     blurb: "Redeem a Unisocks token and obtain proof",
     task: "Own a Unisocks token",
     description:
@@ -487,7 +487,7 @@ const questList = {
     color: "#DC6BE5",
     imgPath: "uniswap.png",
     badgeImgPath: "UNI-301-badge.svg",
-    category: "Games",
+    category: "Gaming",
     categoryColor: "#FFD683",
     prerequisite: "UNI-201",
     points: 250,
