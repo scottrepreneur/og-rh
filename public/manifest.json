@@ -1,6 +1,6 @@
 {
-  "short_name": "Uniswap",
-  "name": "Uniswap Exchange",
+  "short_name": "RabbitHole",
+  "name": "Rabbit Hole",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "background_color": "#111111"
 }
