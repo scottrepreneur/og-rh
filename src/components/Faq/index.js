@@ -46,6 +46,17 @@ const Question = styled.div`
   }
 `
 
+const Answer = styled.div`
+  font-size: 18px;
+  font-weight: semi-bold;
+  color: #A1A4B1
+
+  @media (max-width: 550px) {
+    font-size: 18px;
+    padding-bottom: 15px;
+  }
+`
+
 const Footer = styled.div`
   height: 100px;
   
@@ -61,7 +72,7 @@ const faqs = [
   },
   {
     question: "What can I do with my XP?",
-    answer: "For now, XP is a reputation score that can be accessed by other dApps. In the future, who knows what it will be used for ;) "
+    answer: "For now, XP is a reputation score that can be accessed by other dApps using 3box. In the future, who knows what it will be used for."
   },
   {
     question: "How do you decide which dApps will get on Rabbit Hole?",
@@ -73,7 +84,7 @@ const faqs = [
   },
   {
     question: "How can I get in contact with the team?",
-    answer: "You can join <a href=\"https://discordapp.com\"> our discord here</a> and message the moderators."
+    answer: "You can join <a href=\"https://discord.gg/V7WMqbs\"> our discord here</a> and message the moderators."
   },
 ]
 
@@ -86,7 +97,7 @@ export default function FAQ() {
           return (
             <Faq key={i}>
               <Question>{faq.question}</Question>
-              <div>{faq.answer}</div>
+              <Answer>{faq.answer}</Answer>
             </Faq>
           )
         })}
