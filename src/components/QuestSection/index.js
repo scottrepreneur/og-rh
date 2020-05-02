@@ -147,7 +147,8 @@ const Icon = styled.div`
 `
 
 const Platform = styled.div`
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: bold;
   color: ${({ color }) => color};
   text-transform: uppercase;
 `
