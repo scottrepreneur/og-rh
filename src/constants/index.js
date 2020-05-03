@@ -67,7 +67,7 @@ export const MOBILE_DEEP_LINKS = {
     name: 'Open in Trust Wallet',
     iconName: 'trustWallet.png',
     description: 'iOS and Android app.',
-    href: 'https://link.trustwallet.com/open_url?coin_id=60&url=https://uniswap.exchange/swap',
+    href: 'https://link.trustwallet.com/open_url?coin_id=60&url=https://rabbithole.gg',
     color: '#1C74CC'
   }
 }
