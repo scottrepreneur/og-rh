@@ -122,7 +122,7 @@ const questList = {
     blurb: "Supply tokens to Compound",
     task: "",
     description:
-      "Under the hood, when a user contributes their assets to a large pool of liquidity (a “market”) that is available for other users to borrow, they share in the interest that borrowers pay back to the pool.",
+      "When users and applications supply an asset to the Compound protocol, they begin earning a variable interest income instantly. Interest accrues every Ethereum block (~15 seconds), and users can withdraw their principal plus interest anytime. Try supplying some assets now in Compound.",
     resource: "https://app.compound.finance/",
     platform: "Compound Finance",
     color: "#4dffca",
@@ -335,10 +335,10 @@ const questList = {
   POOL1: {
     name: "POOL-101",
     type: "track",
-    blurb: "Enter the no-loss lottery, PoolTogether",
+    blurb: "Participate in the no-loss lottery, PoolTogether",
     task: "Enter the no-loss lottery, PoolTogether",
     description:
-      "On PoolTogether, each savings ticket gives you a chance to win a prize, but even if you don’t win, you keep all your money! PoolTogether lets you have the best of both worlds -- saving money and the chance to win a prize!",
+      "On PoolTogether, each savings ticket gives you a chance to win a prize, but even if you don’t win, you keep all your money! PoolTogether lets you have the best of both worlds -- saving money and the chance to win a prize! Each week, there's a drawing. You will complete the task when the drawing happens after you bought the ticket.",
     resource: "https://app.pooltogether.com/",
     platform: "PoolTogether",
     color: "#5029ab",
