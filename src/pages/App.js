@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 
 import Web3ReactManager from "../components/Web3ReactManager"
-import { useWeb3React } from "@web3-react/core"
+// import { useWeb3React } from "@web3-react/core"
 import Nav from "../components/Nav"
 import AltHome from "../components/AltHome"
 import Progress from "../pages/Progress"
@@ -32,7 +32,7 @@ const BodyWrapper = styled.div`
 `
 
 export default function App() {
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
 
   return (
     <>

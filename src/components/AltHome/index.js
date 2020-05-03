@@ -200,6 +200,7 @@ export default function AltHome() {
                 href="https://discord.gg/V7WMqbs"
                 style={{ marginLeft: "10px", textDecoration: "none" }}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <Text color="#6fcf97">Discord</Text>
               </a>

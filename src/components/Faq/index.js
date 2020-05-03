@@ -50,6 +50,15 @@ const Answer = styled.div`
   font-size: 18px;
   font-weight: semi-bold;
   color: #A1A4B1
+  
+  & > a {
+    color: #8dfbc9;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
 
   @media (max-width: 550px) {
     font-size: 18px;
@@ -97,7 +106,7 @@ export default function FAQ() {
           return (
             <Faq key={i}>
               <Question>{faq.question}</Question>
-              <Answer>{faq.answer}</Answer>
+              <Answer dangerouslySetInnerHTML={{ __html: faq.answer }} />
             </Faq>
           )
         })}
