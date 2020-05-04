@@ -190,7 +190,7 @@ export default function AltHome() {
             </Link>
             <RowFixed>
               <a
-                href="twitter.com/@rabbithole_gg"
+                href="https://twitter.com/@rabbithole_gg"
                 target="_blank"
                 style={{ textDecoration: "none" }}
               >
