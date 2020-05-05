@@ -45,20 +45,28 @@ const FinanceSelector = styled(Row)`
   width: 50%;
   height: 100%;
   background-color: ${({ active }) => active && "#8dfbc9"};
-  border: ${({ active }) => !active && "1px solid #1F1F1F;"};
+  border: ${({ active }) => !active && "1px solid #CCCCCC;"};
   border-right: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+
+  & > div {
+    color: ${({ active }) => active ? "#1F1F1F" : "#CCCCCC"};
+  }
 `
 
 const GamingSelector = styled(Row)`
   width: 50%;
   height: 100%;
   background-color: ${({ active }) => active && "#FFD683"};
-  border: ${({ active }) => !active && "1px solid #1F1F1F;"};
+  border: ${({ active }) => !active && "1px solid #CCCCCC;"};
   border-left: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+
+  & > div {
+    color: ${({ active }) => active ? "#1F1F1F" : "#CCCCCC"};
+  }
 `
 
 const ActiveWrapper = styled.span`
