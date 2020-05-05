@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { useWeb3React } from "@web3-react/core"
+// import { useWeb3React } from "@web3-react/core"
 import { useMedia } from "use-media"
-import Copy from "../AccountDetails/Copy"
+// import Copy from "../AccountDetails/Copy"
 import Spinner from "../Spinner"
 import { useQuests } from "../../contexts/Application"
 
@@ -123,25 +123,25 @@ const History = styled.div`
   }
 `
 
-const CopyLink = styled.div`
-  grid-area: link;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// const CopyLink = styled.div`
+//   grid-area: link;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  & > div {
-    max-width: 180px;
-    color: #A1A4B1;
-    font-size: 12px;
-    height: 27px;
-    border: 1px solid ${({ theme }) => theme.outlinePurple};
-    border-radius: 20px;
-    background: #1F1F1F;
-    padding 0 15px;
-    display: flex;
-    align-items: center;
-  }
-`
+//   & > div {
+//     max-width: 180px;
+//     color: #A1A4B1;
+//     font-size: 12px;
+//     height: 27px;
+//     border: 1px solid ${({ theme }) => theme.outlinePurple};
+//     border-radius: 20px;
+//     background: #1F1F1F;
+//     padding 0 15px;
+//     display: flex;
+//     align-items: center;
+//   }
+// `
 
 const Activity = styled.div`
   display: grid;
@@ -262,9 +262,9 @@ const Footer = styled.div`
 export default function ActivityHistory() {
   const quests = useQuests()
 
-  const { account } = useWeb3React()
+  // const { account } = useWeb3React()
 
-  const isExtraSmall = useMedia({ maxWidth: "970px" })
+  // const isExtraSmall = useMedia({ maxWidth: "970px" })
 
   const isXXSmall = useMedia({ maxWidth: "930px" })
 

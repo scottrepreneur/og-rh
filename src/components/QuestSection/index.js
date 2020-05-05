@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react"
 import styled from "styled-components"
-import { useWeb3React } from "@web3-react/core"
+// import { useWeb3React } from "@web3-react/core"
 import {
   useENSName,
   // useBoxStorage,
@@ -154,21 +154,21 @@ const Platform = styled.div`
   text-transform: uppercase;
 `
 
-const Track = styled.div`
-  grid-area: track;
-  padding: 0 14px;
-  display: flex;
-  width: 70px;
-  height: 24px;
-  font-size: 16px;
-  color: rgba(245, 245, 253, 1);
-  background-color: ${({ color }) => color};
-  border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-`
+// const Track = styled.div`
+//   grid-area: track;
+//   padding: 0 14px;
+//   display: flex;
+//   width: 70px;
+//   height: 24px;
+//   font-size: 16px;
+//   color: rgba(245, 245, 253, 1);
+//   background-color: ${({ color }) => color};
+//   border-radius: 20px;
+//   align-items: center;
+//   justify-content: center;
+//   flex-wrap: nowrap;
+//   white-space: nowrap;
+// `
 
 const QuestWrapper = styled.div`
   grid-area: quests;
@@ -197,9 +197,9 @@ const Points = styled.div`
   white-space: nowrap;
 `
 
-const QuestType = styled.div`
-  grid-area: type;
-`
+// const QuestType = styled.div`
+//   grid-area: type;
+// `
 
 const Loading = styled.div`
   width: 100%;
@@ -236,7 +236,7 @@ export default function QuestSection({ account }) {
 
   const isXXSmall = useMedia({ maxWidth: "930px" })
 
-  const isBelow600 = useMedia({ maxWidth: "600px" })
+  // const isBelow600 = useMedia({ maxWidth: "600px" })
 
   const root0 = "COMP-101"
   const root1 = "KITTY-101"
