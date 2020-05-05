@@ -256,7 +256,7 @@ const questList = {
     badgeImgPath: "MKR-103-badge.svg",
     category: "Finance",
     categoryColor: "#8DFBC9",
-    prerequisite: "MKR-102",
+    prerequisite: "",
     points: 200,
     progress: 0,
   },

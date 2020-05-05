@@ -87,6 +87,7 @@ const Gutter = styled.div`
 const Quest = styled.div`
   width: calc(100%-40px);
   font-size: 14px;
+  font-weight: 600;
   background-color: #1f1f1f;
   border: 1px solid ${({ theme }) => theme.outlinePurple};
   border-radius: 10px;
@@ -327,7 +328,7 @@ export default function QuestSection({ account }) {
         </RowBetween>
         {OpenQuest === quest && (
           <AutoColumn gap="20px">
-            <Text>{quest.description}</Text>
+            <Text color="#CFCFCF">{quest.description}</Text>
             <RowBetween>
               <Link
                 href={quest.resource}
