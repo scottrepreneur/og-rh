@@ -46,10 +46,9 @@ export const KITTIES_BRED_QUERY = gql`
 
 export const MANA_QUERY = gql`
   query user($user: String!) {
-    user(id: $user) {
-      id
-      parcels {
-        id
+    account(id: $user) {
+      nfts {
+        category
       }
     }
   }

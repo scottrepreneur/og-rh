@@ -641,8 +641,13 @@ export const fetchQuests = async function(ENSName, account) {
               user: account.toLowerCase(),
             },
           })
-          if (result.data.user && result.data.user.parcels) {
-            quest.progress = 100
+          if (result.data.account && result.data.account.nfts) {
+            for (let i=0; i < result.data.account.nfts.length; i++) {
+              if (result.data.account.nfts[i]['category'] === "parcel") {
+                quest.progress = 100
+                break;
+              }
+            }
           }
         }
         if (key === "MKR3") {
